@@ -4,9 +4,8 @@ var http = require('http');
 var express = require('express');
 var routes = require('./routes');
 var path = require('path');
-var config = require('./oauth.js')
-var mongoose = require('mongoose');
-var passport = require('passport')
+var config = require('./oauth.js');
+var passport = require('passport');
 var FacebookStrategy = require('passport-facebook').Strategy;
 var GithubStrategy = require('passport-github').Strategy;
 var NuweStrategy = require('passport-nuwe').Strategy;
@@ -80,14 +79,6 @@ app.configure('development', function(){
 app.configure('production', function(){
     app.use(express.errorHandler());
 });
-
-// mongo config
-var MONGOLAB_URI= "add_your_mongolab_uri_here"
-var mongo = process.env.MONGOLAB_URI || 'mongodb://localhost/node-bootstrap3-template'
-mongoose.connect(mongo);
-
-// mongo model
-// var Model_Name = require('add_your_models_here');
 
 // routes
 app.get('/', routes.index);
